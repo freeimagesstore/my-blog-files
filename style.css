@@ -1,0 +1,472 @@
+/*
+ * Theme Name: Free Images - PixelGlimpse
+ * Description: Lightning-fast, SEO-optimized Blogspot theme for image-centric websites.
+ * Features: Clean design, lazy loading, AMP support, showcase gallery,
+ * featured images, easy customization, cross-browser compatibility,
+ * accessibility, search, image download, image-editable categories,
+ * privacy/T&C/contact links, cookie consent.
+ * Author: Your Name/Team Name (Optional)
+ */
+
+/* These are the styles that were NOT included in the <b:skin> for faster initial load.
+   MAKE SURE TO UPLOAD THIS FILE TO A PUBLIC HOSTING SERVICE AND UPDATE THE URL IN theme.xml */
+
+
+/* --- Main Content Area --- */
+.main-content {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* --- Category Section Styles (Image Editable Categories) --- */
+.category-section {
+    padding: 40px 0;
+    text-align: center;
+    background-color: var(--light-background-color);
+    margin-bottom: 30px; /* Space between categories and main posts */
+}
+
+.category-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: var(--heading-color);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    max-width: 1000px; /* Adjust if needed */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.category-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-card img {
+    width: 100%;
+    height: 180px; /* Fixed height for consistency */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.category-card h3 {
+    font-size: 1.2em;
+    margin: 15px 10px;
+    color: var(--heading-color);
+}
+
+/* --- Post Grid (Homepage / Archive / Search Results) --- */
+.blog-posts {
+    padding-top: 20px;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* For download button positioning */
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.post-card .post-image-link {
+    display: block;
+    overflow: hidden; /* For zoom effect */
+}
+
+.post-card img {
+    width: 100%;
+    height: 220px; /* Fixed height for thumbnails */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover img {
+    transform: scale(1.05);
+}
+
+.post-card h3 {
+    font-size: 1.3em;
+    margin: 15px 15px 5px;
+}
+
+.post-card h3 a {
+    color: var(--heading-color);
+    text-decoration: none;
+}
+.post-card h3 a:hover {
+    color: var(--primary-color);
+}
+
+.post-card .post-date {
+    font-size: 0.85em;
+    color: #888;
+    margin: 0 15px 15px;
+}
+
+/* --- Image Download Button (on post card) --- */
+.image-download-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.post-card:hover .image-download-btn,
+.featured-image-container:hover .image-download-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-download-btn:hover {
+    background-color: var(--dark-primary-color);
+}
+
+/* --- Single Post View --- */
+.post-full {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+.featured-image-container {
+    margin-bottom: 30px;
+    position: relative; /* For download button positioning */
+    overflow: hidden; /* For hover effects */
+}
+.featured-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Limit height for very tall images */
+    object-fit: contain; /* Ensure full image is visible, not cropped */
+    display: block;
+}
+
+/* Single post download button (always visible) */
+.post-full .image-download-btn {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    margin: 25px auto 0 auto; /* Center and give space */
+    display: table; /* Allows auto margins to center block elements */
+}
+
+
+.post-full .post-title {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.post-full .post-meta {
+    font-size: 0.9em;
+    color: #888;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.post-full .post-meta span {
+    margin: 0 5px;
+}
+
+.post-full .post-labels {
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+.post-full .post-labels a {
+    text-decoration: none;
+    border: 1px solid #ddd;
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: #666;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.post-full .post-labels a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+
+.post-full .post-body {
+    line-height: 1.7;
+    font-size: 1.05em;
+    color: var(--text-color);
+}
+.post-full .post-body h2, .post-full .post-body h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+.post-full .post-body img { /* Ensure images within post body are responsive */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Center images in post body */
+}
+
+
+/* --- License Information Styles --- */
+.license-info {
+    background-color: #e6ffe6; /* Light green background */
+    border: 1px solid #ccebcc;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin: 25px 0;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.license-info p {
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
+.license-info p:last-child {
+    margin-bottom: 0;
+}
+
+.license-info strong {
+    color: #28a745; /* Green text for emphasis */
+    font-size: 1.1em;
+}
+
+.license-info a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.license-info a:hover {
+    color: var(--dark-primary-color);
+}
+
+/* --- Pagination (Next/Prev) --- */
+.blog-pager {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.blog-pager a, .blog-pager span {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.blog-pager a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.blog-pager .label-home, .blog-pager .label-newer, .blog-pager .label-older {
+    font-weight: bold;
+}
+.blog-pager .label-home { display: none; } /* Hide default home link if not desired */
+
+
+/* --- Footer Styles --- */
+footer {
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-nav li {
+    margin: 0 15px 10px;
+}
+
+.footer-nav a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--footer-text-color);
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Responsive Adjustments (for external CSS) --- */
+@media (max-width: 1024px) {
+    .main-nav li {
+        margin-left: 15px;
+    }
+    .post-grid {
+        gap: 20px;
+    }
+    .post-card {
+        max-width: 350px; /* Prevent cards from getting too wide in 2-column view */
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .main-nav li {
+        margin: 8px 0;
+    }
+    .search-container {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    .search-input {
+        width: calc(100% - 40px);
+    }
+    .search-input:focus {
+        width: calc(100% - 40px);
+    }
+    .search-button {
+        margin-left: 10px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller cards on small screens */
+    }
+    .category-card img {
+        height: 120px;
+    }
+    .category-card h3 {
+        font-size: 1.1em;
+    }
+
+    .post-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        padding: 0 15px;
+    }
+    .post-card {
+        width: 100%;
+        max-width: none;
+    }
+
+    .post-full {
+        padding: 20px;
+    }
+    .post-full .post-title {
+        font-size: 2em;
+    }
+
+    .footer-nav ul {
+        flex-direction: column;
+    }
+    .footer-nav li {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-inner {
+        padding: 0 10px;
+    }
+    .main-nav a {
+        font-size: 0.95em;
+    }
+    .blog-name h1, .blog-name a {
+        font-size: 1.8em;
+    }
+    .main-content {
+        padding: 0 10px;
+    }
+    .category-section h2 {
+        font-size: 1.8em;
+    }
+    .post-full .post-title {
+        font-size: 1.5em;
+    }
+    .license-info {
+        padding: 10px 15px;
+    }
+}
